@@ -39,8 +39,15 @@ func main() {
 		fmt.Scan(&email)
 		fmt.Println("Enter number of tickets: ")
 		fmt.Scan(&tickets)
+
+		if tickets > remainingTickets {
+			fmt.Printf("We only have %v tickets left, you cannot book %v tickets\n", remainingTickets, tickets);
+			continue;
+		}
+
 		fmt.Printf("User %v %v with email %v booked %v tickets\n", firstName, lastName, email, tickets)
 
+		
 		// bookings[0] = firstName + " " + lastName;
 		// fmt.Printf("List of bookings is %v\n", bookings);
 		// fmt.Printf("Type of bookings is %T\n", bookings);
@@ -54,10 +61,19 @@ func main() {
 			firstNames = append(firstNames, names[0])
 		}
 
-		fmt.Printf("The first name of bookings are %v\n", firstNames)
+		fmt.Printf("The first name of bookings are %v\n", firstNames);
 
-	}
+		var leftTickets int = remainingTickets - tickets;
 
+		if leftTickets == 0 {
+			fmt.Println("All tickets are sold out");
+			break;
+		};
+	
+
+	};
+
+	
 	// var userName string;
 	// var userTickets int;
 	// fmt.Println("Enter your name: ");
