@@ -1,14 +1,24 @@
 package main
 
 import (
+	"Booking-App/helper"
 	"fmt"
-	"strings"
+	"strconv"
 )
 
 var conferenceName string = "Go conference"
+
 const conferenceTickets int = 50
+
 var remainingTickets int = 50
-var slices []string
+var slices = make([]UserData, 0)
+
+type UserData struct {
+	firstName string
+	lastName string
+	email string
+	numberOfTickets int
+}
 
 func main() {
 
@@ -36,12 +46,12 @@ func main() {
 		middleName = &name
 		fmt.Println("Value of middleName is", *middleName)
 
-		isValidEmail, isValidName, isValidTicketNumber := validateUserInput(firstName, lastName, email, tickets, remainingTickets)
+		isValidEmail, isValidName, isValidTicketNumber := helper.ValidateUserInput(firstName, lastName, email, tickets, remainingTickets)
 
 		if isValidEmail && isValidName && isValidTicketNumber {
 
-			leftTickets := bookingTicket(remainingTickets, firstName, lastName, email, tickets);
-			
+			leftTickets := bookingTicket(remainingTickets, firstName, lastName, email, tickets)
+
 			firstNames := getFirstName()
 			fmt.Printf("First names of bookings are %v\n", firstNames)
 
@@ -90,19 +100,10 @@ func getFirstName() []string {
 
 	firstNames := []string{}
 	for _, values := range slices {
-		var names = strings.Fields(values)
-		firstNames = append(firstNames, names[0])
+		firstNames = append(firstNames, values["firstName"])
 	}
 
 	return firstNames
-}
-
-func validateUserInput(firstName string, lastName string, email string, tickets int, remainingTickets int) (bool, bool, bool) {
-	isValidName := len(firstName) >= 2 && len(lastName) >= 2
-	isValidEmail := strings.Contains(email, "@")
-	isValidTicketNumber := tickets > 0 && tickets <= remainingTickets
-
-	return isValidName, isValidEmail, isValidTicketNumber
 }
 
 func getUserInput() (string, string, string, int) {
@@ -125,9 +126,18 @@ func getUserInput() (string, string, string, int) {
 
 func bookingTicket(remainingTickets int, firstName string, lastName string, email string, tickets int) int {
 	var leftTickets int = remainingTickets - tickets
-	slices = append(slices, firstName+" "+lastName)
 
-	fmt.Printf("User %v %v with email %v booked %v tickets\n", firstName, lastName, email, tickets);
+	//create a map
+	var userData = make(map[string]string)
+	userData["firstName"] = firstName
+	userData["lastName"] = lastName
+	userData["email"] = email
+	userData["tickect"] = strconv.FormatInt(int64(tickets), 10)
+
+	slices = append(slices, userData)
+	fmt.Printf("List  of bookings is: %v \n", slices)
+
+	fmt.Printf("User %v %v with email %v booked %v tickets\n", firstName, lastName, email, tickets)
 
 	return leftTickets
 
