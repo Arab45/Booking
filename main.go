@@ -3,6 +3,8 @@ package main
 import (
 	"Booking-App/helper"
 	"Booking-App/premium"
+	"Booking-App/booking"
+	
 	"fmt"
 )
 
@@ -23,6 +25,7 @@ type UserData struct {
 
 func main() {
 
+	booking.Booking();
 	premium.PremiumUser()
 
 	greetUser()

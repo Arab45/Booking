@@ -6,42 +6,53 @@ import (
 )
 
 type BookingUser struct {
-	userId  string
-	product map[string]string;
-	date    time.Time
-	delivery string
+	UserId   string
+	Product  map[string]string
+	Date     time.Time
+	Delivery string
 }
 
 func Booking() {
 	var bookings = make([]BookingUser, 0)
 
-
-	
 	var userId string
-	var product map[string]string
-	var date time.Time
 	var delivery string
 
-	fmt.Printf("provide your userId:");
+	// --- For now, we'll simulate input for map and date ---
+	// because you cannot scan a map or time.Time directly from the console
+
+	// Simple input for userId
+	fmt.Printf("Provide your userId: ")
 	fmt.Scan(&userId)
-	fmt.Printf("provide your product order:");
-	fmt.Scan(&product)
-	fmt.Printf("current time:");
-	fmt.Scan(&date)
-	fmt.Printf("delivery day:");
+
+	// Simulated product map input
+	product := make(map[string]string)
+	var productKey, productValue string
+
+	fmt.Printf("Enter product key: ")
+	fmt.Scan(&productKey)
+	fmt.Printf("Enter product value: ")
+	fmt.Scan(&productValue)
+	product[productKey] = productValue
+
+	// Set current time for booking
+	date := time.Now()
+
+	// Delivery input
+	fmt.Printf("Delivery day: ")
 	fmt.Scan(&delivery)
 
-
-
+	// Construct the booking
 	var bookingTable = BookingUser{
-		userId:  userId,
-	    product: product,
-	    date: date,
-	    delivery: delivery,	
+		UserId:   userId,
+		Product:  product,
+		Date:     date,
+		Delivery: delivery,
 	}
 
-	var collection = append(bookings, bookingTable);
-	fmt.Printf("booking collection details %v\n", collection);
+	// Append to collection
+	bookings = append(bookings, bookingTable)
 
-
+	// Print the result
+	fmt.Printf("Booking collection details:\n%+v\n", bookings)
 }
