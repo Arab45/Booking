@@ -41,7 +41,7 @@ func Booking() {
 	}
 
 	var collection = append(bookings, bookingTable);
-	fmt.Printf("")
+	fmt.Printf("booking collection details %v\n", collection);
 
 
 }
