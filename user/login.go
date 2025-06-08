@@ -13,10 +13,16 @@ func Login() {
 	var username string
 	var password string
 
-	fmt.Printf("")
+	fmt.Printf("insert your username:")
+	fmt.Scan(&username);
+	fmt.Printf("password most be mixture of upperCase and lowerCase:")
+	fmt.Scan(&password);
 
 	var loginDetails = Login{
 		username: username,
 		password: password,
 	}
+
+	var userTable = append(collection, loginDetails);
+	fmt.Printf("user login collection %v\n", userTable);
 }
