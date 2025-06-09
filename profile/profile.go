@@ -13,7 +13,7 @@ func Profile() {
 		password  string
 	}
 
-	var collection []Profile
+	var collections []Profile
 
 	var firstName string
 	var lastName string
@@ -47,4 +47,7 @@ func Profile() {
 		address:   address,
 		password:  password,
 	}
+
+	var groups = append(collections, profileTable);
+	fmt.Printf("User profile created successfully %v\n", groups)
 }
