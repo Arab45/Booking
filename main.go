@@ -5,6 +5,8 @@ import (
 	"Booking-App/premium"
 	"Booking-App/booking"
 	"Booking-App/login"
+	"Booking-App/profile"
+
 
 	
 	"fmt"
@@ -26,8 +28,9 @@ type UserData struct {
 }
 
 func main() {
-
-	login.Login()
+	profile.Profile();
+	
+	login.Login();
 
 	booking.Booking();
 	premium.PremiumUser()

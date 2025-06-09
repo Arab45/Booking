@@ -23,19 +23,19 @@ func Profile() {
 	var address string
 	var password string
 
-	fmt.Print("Enter your first name:");
+	fmt.Print("Enter your first name: ");
 	fmt.Scan(&firstName);
-	fmt.Print("Enter your last name:");
+	fmt.Print("Enter your last name: ");
 	fmt.Scan(&lastName);
-	fmt.Print("Enter your email address:");
+	fmt.Print("Enter your email address: ");
 	fmt.Scan(&email);
-	fmt.Print("Enter your user name:");
+	fmt.Print("Enter your user name: ");
 	fmt.Scan(&userName);
-	fmt.Print("Enter your phone number:");
+	fmt.Print("Enter your phone number: ");
 	fmt.Scan(&phone);
-	fmt.Print("Enter your address:");
+	fmt.Print("Enter your address: ");
 	fmt.Scan(&address);
-	fmt.Print("Enter your password:");
+	fmt.Print("Enter your password: ");
 	fmt.Scan(&password);
 
 	var profileTable = Profile{
@@ -49,5 +49,5 @@ func Profile() {
 	}
 
 	var groups = append(collections, profileTable);
-	fmt.Printf("User profile created successfully %v\n", groups)
+	fmt.Printf("User profile created successfully%v\n", groups)
 }
