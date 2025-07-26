@@ -17,6 +17,8 @@ var conferenceName string = "Go conference"
 const conferenceTickets int = 50
 
 var remainingTickets int = 50
+const leftTicket int = 4
+const PI float64 = 4.28
 // var slices = make([]UserData, 0)
 var slices []UserData;
 
@@ -25,9 +27,26 @@ type UserData struct {
 	lastName string
 	email string
 	numberOfTickets int
+};
+
+type Profile struct{
+	userName string
+	photoUrl string
+	bio string
 }
 
 func main() {
+	fmt.Println(leftTicket)
+	structs := []string{"John", "Jane", "Alice", "Bob"}
+	fmt.Println("Welcome to the Go conference booking application!")
+	fmt.Println("Available structs are:", &structs)
+	x := 10
+	p := &x
+	fmt.Println("Value of x is", x);
+	// fmt.Println("Address of x is", &x); // this is the same as p
+	fmt.Println("Address of x is", p);
+	fmt.Println("Value of x is", *p); // dereferencing the pointer to get the value of x
+
 	profile.Profile();
 	
 	login.Login();
@@ -36,6 +55,8 @@ func main() {
 	premium.PremiumUser()
 
 	greetUser()
+
+
 
 	// slices = append(slices, "John Smith");
 	// fmt.Println("slice in Go is also an array", slices[0]);
@@ -99,7 +120,6 @@ func main() {
 		default:
 			fmt.Println("You are not in London, New York or Paris")
 		}
-
 	}
 }
 
